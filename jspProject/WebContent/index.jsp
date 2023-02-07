@@ -1,3 +1,4 @@
+<%@page import="com.kh.common.JDBCTemplate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -31,7 +32,8 @@
 		  게시판 리스트 조회(R) - 썸네일 / 상세조회(R)
 		  게시글 작성(C) / 첨부파일 업로드(C)
 	 -->
-	잘뜨나?
+	
+	<%@ include file = "views/common/menubar.jsp" %>
 
 </body>
 </html>
