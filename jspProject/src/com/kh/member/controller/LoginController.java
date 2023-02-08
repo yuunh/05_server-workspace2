@@ -79,8 +79,18 @@ public class LoginController extends HttpServlet {
 			
 			session.setAttribute("loginUser", loginUser);
 			
-			RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-			view.forward(request, response);
+			// 1. 포워딩 방식 응답 뷰 출력
+			//	  해당 선택된 jsp가 보여질 뿐 url에는 여전히 현재 이 서블릿 매핑값이 남아있음
+			//	  localhost:8001/jsp/login.me
+			// RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+			// view.forward(request, response);
+			
+			// 2. url 재요청 방식 (sendRedirect 방식)
+			//	  기존에 저 페이지를 응답하는 url이 존재한다면 사용 가능
+			//	  localhost:8001/jsp
+			// response.sendRedirect("/jsp");
+			
+			response.sendRedirect(request.getContextPath()); // "/jsp"
 		}
 	}
 
