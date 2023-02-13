@@ -1,26 +1,28 @@
-package com.kh.member.controller;
+package com.kh.notice.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import com.kh.notice.model.service.NoticeService;
+import com.kh.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class MyPageController
+ * Servlet implementation class NoticeListController
  */
-@WebServlet("/myPage.me")
-public class MyPageController extends HttpServlet {
+@WebServlet("/list.no")
+public class NoticeListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageController() {
+    public NoticeListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,22 +31,15 @@ public class MyPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 로그인 전에 url 쳐서 들어온 경우
-		// 로그인 전 요청시 => 메인페이지 응답, alert 띄우기
-		// 로그인 후 요청시 => 마이페이지 응답
+		// [ 1, 2) 인코딩, 요청시 전달값 ] - 생략가능
 		
-		HttpSession session = request.getSession();
+		// 3) 요청처리 (응답페이지에 필요한 데이터를 조회)
+		ArrayList<Notice> list = new NoticeService().selectNoticeList();
 		
-		if (session.getAttribute("loginUser") == null) { // 로그인 전
-			session.setAttribute("alertMsg", "로그인 후 이용 가능한 서비스입니다.");
-			response.sendRedirect(request.getContextPath());
-		} else { // 로그인 후
-			// 포워딩 방식
-			RequestDispatcher view = request.getRequestDispatcher("views/member/myPage.jsp");
-			view.forward(request, response);
-		}
-		
-		
+		// 4) 응답뷰 => 공지사항 목록레이지
+		//	  응답뷰에 필요한 데이터 request의 attribute에 담기
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("views/notice/noticeListView.jsp").forward(request, response);
 	}
 
 	/**
