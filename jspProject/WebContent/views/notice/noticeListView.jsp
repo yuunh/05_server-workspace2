@@ -23,7 +23,11 @@
     .list-area {
         border: 1px solid white;
         text-align: center;
-
+    }
+    
+    .list-area>tbody>tr:hover {
+    	background-color: #A28AA6;
+    	cursor: pointer;
     }
 </style>
 </head>
@@ -75,5 +79,20 @@
 			</tbody>
 		</table>
     </div>
+    
+    <script>
+    	$(function() {
+			$(".list-area>tbody>tr").click(function() {
+				const num = $(this).children().eq(0).text();
+				// console.log(num); 
+				
+				// 요청할 url?키=벨류&키=벨류
+				// 요청시 전달값 (키=벨류) == 쿼리스트링이라구 한당
+				
+				// /jsp/detail.no?num=클릭한글번호
+				location.href = '<%= contextPath %>/detail.no?num=' + num;
+			})
+		})
+    </script>
 </body>
 </html>
