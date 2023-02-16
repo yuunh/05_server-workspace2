@@ -6,6 +6,11 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -17,7 +22,7 @@
         background-color: #C7A9CC;
         color: white;
         width: 1000px;
-        height: 500px;
+        height: 600px;
         margin: auto;
         margin-top: 50px;
     }
@@ -38,11 +43,13 @@
         <br>
 
         <!-- 로그인한 회원만 보여지는 div -->
+        <% if (loginUser != null) { %>
         <div align="right" style="width: 860px;">
-            <button>글작성</button>
+            <a href="<%= contextPath %>/enrollForm.bo" class="btn btn-sm btn-secondary">글작성</a>
             <br><br>
         </div>
-
+		<% } %>
+		
         <table align="center" class="list-area">
             <thead>
                 <tr>
@@ -80,19 +87,21 @@
 
         <div class="paging-area" align="center">
         
-        	아직 페이징바는 미완성 상태 => 내일 할 거임
-            <button>&lt;</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>10</button>
-            <button>&gt;</button>
+        	<% if (currentPage != 1) { %>
+            	<button onclick="location.href = '<%= contextPath %>/list.bo?cpage=<%= currentPage - 1 %>'">&lt;</button>
+            <% } %>
+            
+            <% for (int p = startPage; p <= endPage; p++) { %>
+            	<% if (p == currentPage) { %>
+            		<button style="background: #635566" disabled><%= p %></button>
+            	<% } else { %>
+            		<button onclick="location.href = '<%= contextPath %>/list.bo?cpage=<%= p %>'"><%= p %></button>
+            	<% } %>
+            <% } %>
+            
+            <% if (currentPage != maxPage) { %>
+            <button onclick="location.href = '<%= contextPath %>/list.bo?cpage=<%= currentPage + 1 %>'">&gt;</button>
+       		<% } %>
         </div>
     </div>
 </body>
