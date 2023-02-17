@@ -31,6 +31,11 @@
         border: 1px solid white;
         text-align: center;
     }
+    
+    .list-area>tbody>tr:hover {
+	background-color: #A28AA6;
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -83,6 +88,14 @@
             </tbody>
         </table>
 
+		<script>
+			$(function() {
+				$(".list-area>tbody>tr").click(function() {
+					location.href='<%= contextPath %>/detail.bo?bno=' + $(this).children().eq(0).text();
+				})
+			})
+		</script>
+		
         <br><br>
 
         <div class="paging-area" align="center">
@@ -93,7 +106,7 @@
             
             <% for (int p = startPage; p <= endPage; p++) { %>
             	<% if (p == currentPage) { %>
-            		<button style="background: #635566" disabled><%= p %></button>
+            		<button style="background: #A28AA6" disabled><%= p %></button>
             	<% } else { %>
             		<button onclick="location.href = '<%= contextPath %>/list.bo?cpage=<%= p %>'"><%= p %></button>
             	<% } %>
