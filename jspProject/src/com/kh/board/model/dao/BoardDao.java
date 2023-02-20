@@ -35,6 +35,7 @@ public class BoardDao {
 	}
 	
 	/**
+	 * 게시판 조회수 조회
 	 * @param conn
 	 * @return
 	 */
@@ -121,6 +122,7 @@ public class BoardDao {
 	}
 
 	/**
+	 * 게시판 목록 조회
 	 * @param conn
 	 * @return
 	 */
@@ -159,6 +161,7 @@ public class BoardDao {
 	}
 	
 	/**
+	 * 카테고리 목록 조회
 	 * @param conn
 	 * @return
 	 */
@@ -225,6 +228,7 @@ public class BoardDao {
 	}
 	
 	/**
+	 * 첨부파일 등록
 	 * @param conn
 	 * @param at
 	 * @return
@@ -284,6 +288,7 @@ public class BoardDao {
 	}
 	
 	/**
+	 * 게시글 조회
 	 * @param conn
 	 * @param boardNo
 	 * @return
@@ -322,6 +327,7 @@ public class BoardDao {
 	}
 	
 	/**
+	 * 첨부파일 조회
 	 * @param conn
 	 * @param boardNo
 	 * @return
@@ -360,6 +366,7 @@ public class BoardDao {
 	}
 	
 	/**
+	 * 게시글 수정
 	 * @param conn
 	 * @param b
 	 * @return
@@ -390,6 +397,7 @@ public class BoardDao {
 	}
 	
 	/**
+	 * 첨부파일 수정
 	 * @param conn
 	 * @param at
 	 * @return

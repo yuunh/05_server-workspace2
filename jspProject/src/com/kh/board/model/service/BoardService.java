@@ -30,6 +30,7 @@ public class BoardService {
 	}
 	
 	/**
+	 * 일반게시판 목록 조회
 	 * @param pi
 	 * @return
 	 */
@@ -44,6 +45,7 @@ public class BoardService {
 	}
 	
 	/**
+	 * 일반게시판 목록 조회
 	 * @return
 	 */
 	public ArrayList<Board> selectList2() {
@@ -57,6 +59,7 @@ public class BoardService {
 	}
 	
 	/**
+	 * 카테고리 목록 조회
 	 * @return
 	 */
 	public ArrayList<Category> selectCategoryList() {
@@ -70,6 +73,7 @@ public class BoardService {
 	}
 	
 	/**
+	 * 게시판 등록
 	 * @param b
 	 * @param at
 	 * @return
