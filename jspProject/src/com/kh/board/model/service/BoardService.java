@@ -13,6 +13,10 @@ import static com.kh.common.JDBCTemplate.*;
 
 public class BoardService {
 
+	/**
+	 * 일반게시판 조회
+	 * @return
+	 */
 	public int selectListCount() {
 		Connection conn = getConnection();
 		
@@ -25,6 +29,10 @@ public class BoardService {
 		return listCount;
 	}
 	
+	/**
+	 * @param pi
+	 * @return
+	 */
 	public ArrayList<Board> selectList(PageInfo pi) {
 		Connection conn = getConnection();
 		
@@ -35,6 +43,9 @@ public class BoardService {
 		return list;
 	}
 	
+	/**
+	 * @return
+	 */
 	public ArrayList<Board> selectList2() {
 		Connection conn = getConnection();
 		
@@ -45,6 +56,9 @@ public class BoardService {
 		return list;
 	}
 	
+	/**
+	 * @return
+	 */
 	public ArrayList<Category> selectCategoryList() {
 		Connection conn = getConnection();
 		
@@ -55,6 +69,11 @@ public class BoardService {
 		return list;
 	}
 	
+	/**
+	 * @param b
+	 * @param at
+	 * @return
+	 */
 	public int insertBoard(Board b, Attachment at) {
 		Connection conn = getConnection();
 		
@@ -75,6 +94,11 @@ public class BoardService {
 		return result1 * result2; // 1 * 1 = 1
 	}
 	
+	/**
+	 * 조회수 증가
+	 * @param boardNo
+	 * @return
+	 */
 	public int increaseCount(int boardNo) {
 		Connection conn = getConnection();
 		
@@ -91,6 +115,11 @@ public class BoardService {
 		return result;
 	}
 	
+	/**
+	 * 게시글 조회
+	 * @param boardNo
+	 * @return
+	 */
 	public Board selectBoard(int boardNo) {
 		Connection conn = getConnection();
 		
@@ -101,6 +130,11 @@ public class BoardService {
 		return b;
 	}
 	
+	/**
+	 * 첨부파일 조회
+	 * @param boardNo
+	 * @return
+	 */
 	public Attachment selectAttachment(int boardNo) {
 		Connection conn = getConnection();
 		
@@ -111,6 +145,12 @@ public class BoardService {
 		return at;
 	}
 	
+	/**
+	 * 게시글 수정
+	 * @param b
+	 * @param at
+	 * @return
+	 */
 	public int updateBoard(Board b, Attachment at) {
 		Connection conn = getConnection();
 		
