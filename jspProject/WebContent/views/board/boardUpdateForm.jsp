@@ -44,9 +44,11 @@
         <h2 align="center">일반게시판 수정하기</h2>
         <br>
 
-        <form action="<%= contextPath %>/" id="update-form" method="post" enctype="multipart/form-data"> 
+        <form action="<%= contextPath %>/update.bo" id="update-form" method="post" enctype="multipart/form-data"> 
         <!-- 첨부파일 있으면 무조건 post / 파일 자체를 넘기려면 enctype 필요 -->
-
+        
+			<input type="hidden" name="bno" value="<%= b.getBoardNo() %>">
+			
             <table align="center">
                 <!-- (tr>th+td)*4 -->
                 <tr>
@@ -84,6 +86,7 @@
                     <td>
                     	<% if (at != null) { %>
                     		<%= at.getOriginName() %>
+                    		<input type="hidden" name="originFileNo" value="<%= at.getFileNo() %>">
                     	<% } %>
                     <input type="file" name="upfile"></td>
                 </tr>
@@ -92,7 +95,7 @@
             <br>
 
             <div align="center">
-                <button type="submit">작성하기</button>
+                <button type="submit">수정하기</button>
                 <button type="reset">취소하기</button>
             </div>
         </form>
