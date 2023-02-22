@@ -150,6 +150,21 @@ public class BoardService {
 	}
 	
 	/**
+	 * 첨부파일 리스트 조회
+	 * @param boardNo
+	 * @return
+	 */
+	public ArrayList<Attachment> selectAttachmentList(int boardNo) {
+		Connection conn = getConnection();
+		
+		ArrayList<Attachment> list = new BoardDao().selectAttachmentList(conn, boardNo);
+		
+		close(conn);
+		
+		return list;
+	}
+	
+	/**
 	 * 게시글 수정
 	 * @param b
 	 * @param at

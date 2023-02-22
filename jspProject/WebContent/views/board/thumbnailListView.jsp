@@ -32,6 +32,11 @@
 	display: inline-block;
 	margin: 14px;
 }
+
+.thumbnail:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
 </style>
 </head>
 <body>
@@ -50,12 +55,13 @@
 		<% } %>
 
 		<div class="list-area">
-			<!-- 썸네일 한개 -->
 			<% if (list.isEmpty()) { %>
 			<p>조회된 게시글이 없습니다.</p>
 			<% } else { %>
 				<% for (Board b : list) { %>
+				<!-- 썸네일 한개 -->
 				<div class="thumbnail" align="center">
+					<input type="hidden" value="<%= b.getBoardNo() %>">
 					<img src="<%= b.getTitleImg() %>" alt="" width="200" height="150">
 					<p>
 						No. <%= b.getBoardNo() %> <%= b.getBoardTitle() %> <br> 
@@ -66,5 +72,11 @@
 			<% } %>
 		</div>
 	</div>
+	
+	<script>
+		$(".thumbnail").click(function() {
+			location.href = "<%= contextPath %>/detail.th?bno=" + $(this).children("input").val();
+		})
+	</script>
 </body>
 </html>
