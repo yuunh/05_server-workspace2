@@ -91,7 +91,7 @@
 
                     <div align="center">
                         <button type="submit" disabled="disabled">회원가입</button>
-                        <button type="reset">초기화</button>
+                        <button type="reset" onclick="readonlyFalse();">초기화</button>
                     </div>
 
                     <br>
@@ -101,6 +101,11 @@
             </div>
             
             <script>
+            	function readonlyFalse() {
+            		const $idInput = $("#enroll-form input[name=userId]");
+            		$idInput.removeAttr("readonly").focus();
+				}
+            	
             	function idCheck() {
 					// 중복확인 버튼 클릭시 사용자가 입력한 아이디 값을 넘겨서 조회 요청 (존재 여부 확인) => 응답데이터 돌려받기
 					// 1) 사용불가능(NNNNN)일 경우 => alert로 메시지 출력, 다시 입력할 수 있도록 유도
@@ -115,7 +120,23 @@
 						url : "idCheck.me",
 						data : {checkId:$idInput.val()},
 						success : function(result) {
-							console.log(result);
+							// console.log(result);
+							if (result == "NNNNN") { // 사용불가능일 경우
+								// console.log("사용불가능");
+								alert("이미 존재하거나 탈퇴한 회원의 아이디 입니다.");
+								$idInput.val(""); // 입력한 내용 지워지기
+								$idInput.focus(); // 다시 입력할 수 있도록 유도
+							} else { // 사용가능일 경우
+								// console.log("사용쌉가능");
+								if (confirm("사용가능한 아이디 입니다. 사용하시겠습니까?")) { // 확인
+									$idInput.attr("readonly", true); // 수정 못하게
+									// $("#enroll-form :submit").attr("disabled", false); // 버튼 활성화
+									$("#enroll-form :submit").removeAttr("disabled"); // 버튼 활성화
+								} else { // 취소
+									$idInput.val("");
+									$idInput.focus();
+								}
+							}
 						},
 						error : function() {
 							console.log("아이디 중복체크용 ajax 통신 실패");
