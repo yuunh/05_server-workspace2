@@ -52,6 +52,7 @@ public class WaterDao {
 	}
 	
 	public int updateWater(Connection conn, Water w) {
+		
 		int result = 0;
 		
 		PreparedStatement pstmt = null;
@@ -93,9 +94,11 @@ public class WaterDao {
 			rset = pstmt.executeQuery();
 			
 			if (rset.next()) {
-				w = new Water(rset.getString("brand"),
+				w = new Water(rset.getInt("water_no"),
+							  rset.getString("brand"),
 							  rset.getInt("price"));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -104,5 +107,33 @@ public class WaterDao {
 		}
 		
 		return w;
+	}
+	
+	public int selectWaterNo(Connection conn) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectWaterNo");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if (rset.next()) {
+				result = rset.getInt("wno");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
 	}
 }

@@ -20,7 +20,7 @@
 	%>
 	
 	<form action="<%=contextPath%>/update.wa" method="post">
-		<input type="hidden" name="waterNo">
+		<input type="hidden" name="waterNo" value="<%= w.getWaterNo() %>">
 		<table>
 			<tr>
 				<th>생수명</th>

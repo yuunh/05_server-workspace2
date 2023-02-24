@@ -26,18 +26,18 @@ public class WaterService {
 		return result;
 	}
 	
-	public Water updateWater(Water w) {
+	public int updateWater(Water w) {
 		
 		Connection conn = getConnection();
 		
 		int result = new WaterDao().updateWater(conn, w);
 		
-		Water updateWater = null;
+		// Water updateWater = null;
 		
 		if (result > 0) {
 			commit(conn);
 			
-			updateWater = new WaterDao().selectWater(conn, w.getWaterNo());
+			// updateWater = new WaterDao().selectWater(conn, w.getWaterNo());
 		
 		} else {
 			rollback(conn);
@@ -45,6 +45,17 @@ public class WaterService {
 		
 		close(conn);
 		
-		return updateWater;
+		return result;
+	}
+	
+	public int selectWaterNo() {
+		
+		Connection conn = getConnection();
+		
+		int result = new WaterDao().selectWaterNo(conn);
+		
+		close(conn);
+		
+		return result;
 	}
 }

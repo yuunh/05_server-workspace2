@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
+ <properties>
    <entry key="loginMember">
    SELECT 
          USER_NO
@@ -57,7 +57,7 @@
       WHERE USER_ID = ?
 
    </entry>
-   <entry key="selectMember">
+   <entry key="selectMemner">
       SELECT 
             USER_NO
             ,USER_ID

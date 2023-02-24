@@ -35,12 +35,17 @@ public class WaterInsertController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
+		// int waterNo = Integer.parseInt(request.getParameter("water_no"));
 		String brand = request.getParameter("brand");
 		int price = Integer.parseInt(request.getParameter("price"));
 
 		Water w = new Water(brand, price);
 
 		int result = new WaterService().insertWater(w);
+		
+		int wNo = new WaterService().selectWaterNo();
+		
+		w.setWaterNo(wNo);
 
 		if (result > 0) {
 			HttpSession session = request.getSession();

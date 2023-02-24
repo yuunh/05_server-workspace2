@@ -27,9 +27,17 @@ UPDATE WATER
 
 <entry key="selectWater">
 SELECT 
-       BRAND
+       WATER_NO
+     , BRAND
      , PRICE
   FROM WATER
  WHERE WATER_NO = ?
+</entry>
+
+<entry key="selectWaterNo">
+SELECT
+       LAST_NUMBER - 1 WNO
+  FROM USER_SEQUENCES
+ WHERE SEQUENCE_NAME = 'SEQ_WNO'
 </entry>
 </properties>
