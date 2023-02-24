@@ -252,4 +252,23 @@ SELECT
  ORDER
     BY REPLY_NO DESC
 </entry>
+
+<!-- 댓글 작성용 쿼리 -->
+<entry key="insertReply">
+INSERT
+  INTO REPLY
+     (
+       REPLY_NO
+     , REPLY_CONTENT
+     , REF_BNO
+     , REPLY_WRITER
+     )
+     VALUES
+     (
+       SEQ_RNO.NEXTVAL
+     , ?
+     , ?
+     , ?
+     )
+</entry>
 </properties>
