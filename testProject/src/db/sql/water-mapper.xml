@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="insertWater">
+INSERT
+  INTO WATER
+  (
+       WATER_NO
+     , BRAND
+     , PRICE
+  )
+  VALUES
+  (
+       SEQ_WNO.NEXTVAL
+     , ?
+     , ?
+  )
+</entry>
+
+<entry key="updateWater">
+UPDATE WATER
+   SET
+       BRAND = ?
+     , PRICE = ?
+ WHERE WATER_NO = ?
+</entry>
+
+<entry key="selectWater">
+SELECT 
+       BRAND
+     , PRICE
+  FROM WATER
+ WHERE WATER_NO = ?
+</entry>
+</properties>
