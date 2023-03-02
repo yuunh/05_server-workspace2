@@ -96,6 +96,8 @@ public class BoardService {
 			rollback(conn);
 		}
 		
+		close(conn);
+		
 		return result1 * result2; // 1 * 1 = 1
 	}
 	
