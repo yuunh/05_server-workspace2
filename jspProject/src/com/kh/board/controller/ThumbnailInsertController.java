@@ -47,7 +47,7 @@ public class ThumbnailInsertController extends HttpServlet {
 			
 			// 2. 전달된 파일 업로드
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
-			
+			System.out.println(savePath + 1323);
 			// 3. db에 기록할 값 뽑기
 			// Board insert
 			Board b = new Board();
