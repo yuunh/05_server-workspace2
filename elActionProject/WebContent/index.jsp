@@ -46,5 +46,7 @@
 	<a href="views/2_standardAction/01_include.jsp">01_jsp:include</a> <br><br>
 	<a href="views/2_standardAction/02_forward.jsp">02_jsp:forward</a>
 	
+	<h3>2. 커스텀 액션 태그 (JSTL)</h3>
+	<a href="views/3_customAction/jstl.jsp">JSTL</a>
 </body>
 </html>
