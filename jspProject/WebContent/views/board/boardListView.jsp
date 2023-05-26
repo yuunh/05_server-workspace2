@@ -94,7 +94,7 @@
 					location.href='<%= contextPath %>/detail.bo?bno=' + $(this).children().eq(0).text();
 				})
 			})
-		</script>
+		</script> 
 		
         <br><br>
 
